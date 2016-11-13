@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -18,22 +17,19 @@ public:
 	string name;
 	bool allAcquired;
 	short RequisiteNumber;
-	Requisites();
+	Requisites(short requisiteNumber, Requisite myRawData[3]);
 	void Print();
 
 private:
 	Requisite RawData[100];
 };
 
-Requisites::Requisites()
+Requisites::Requisites(short requisiteNumber, Requisite myRawData[3])
 {
 	allAcquired = false;
 
-	// For buildings
-	Requisite myRawData[] = {{"Building permit", false}, {"Finance", false}, {"Builder", false}};
-
 	// Number of requisites
-	Requisites::RequisiteNumber = sizeof(myRawData) / sizeof(Requisite);
+	Requisites::RequisiteNumber = requisiteNumber;
 
 	cout << RequisiteNumber << endl << endl;
 
@@ -41,7 +37,7 @@ Requisites::Requisites()
 
 	for (i = 0; i < Requisites::RequisiteNumber; i++)
 	{
-		RawData[i] = myRawData[i];
+		Requisites::RawData[i] = myRawData[i];
 	}
 }
 
@@ -59,7 +55,10 @@ int main(int argc, char** argv)
 {
 	cout << "Requisite" << endl << endl;
 
-	Requisites myRequisites;
+	// For buildings
+	Requisite myRawData[] = {{"Building permit", false}, {"Finance", false}, {"Builder", false}};
+
+	Requisites myRequisites(3, myRawData);
 
 	myRequisites.Print();
 
