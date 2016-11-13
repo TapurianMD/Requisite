@@ -49,7 +49,7 @@ void Requisites::Print()
 
 	for (i = 0; i < Requisites::RequisiteNumber; i++)
 	{
-		cout << "\t\t" << 1 + i << ". " << RawData[i].name << "\n\t\t\tStatus: " << RawData[i].acquired << endl;
+		cout << "\t\t" << 1 + i << ". " << RawData[i].name << "\n\t\t\tStatus: " << (RawData[i].acquired == 1? "Acquired" : "To be acquired") << endl;
 	}
 }
 
