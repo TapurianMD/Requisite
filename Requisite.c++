@@ -2,27 +2,12 @@
 
 #include <iostream>
 #include <string>
+#include "Requisite.h"
+
+#ifndef __REQUISITE_CPP__
+#define __REQUISITE_CPP__
 
 using namespace std;
-
-typedef struct
-{
-	string name;
-	bool acquired;
-} Requisite;
-
-class Requisites
-{
-public:
-	string Name;
-	bool allAcquired;
-	short RequisiteNumber;
-	Requisites(string name, short requisiteNumber, Requisite myRawData[3]);
-	void Print();
-
-private:
-	Requisite RawData[100];
-};
 
 Requisites::Requisites(string name, short requisiteNumber, Requisite myRawData[3])
 {
@@ -49,21 +34,11 @@ void Requisites::Print()
 
 	for (i = 0; i < Requisites::RequisiteNumber; i++)
 	{
-		cout << "\t\t" << 1 + i << ". " << RawData[i].name << "\n\t\t\tStatus: " << (RawData[i].acquired == 1? "Acquired" : "To be acquired") << endl;
+		cout << "\t\t" << 1 + i << ". " << RawData[i].name << "\n\t\t\tStatus: " << (RawData[i].acquired == 1? "DONE" : "TODO") << endl;
 	}
+
+	cout << endl << endl;
 }
 
-int main(int argc, char** argv)
-{
-	cout << "Requisite" << endl << endl;
-
-	// For buildings
-	Requisite myRawData[] = {{"Building permit", false}, {"Finance", false}, {"Builder", false}};
-
-	Requisites myRequisites("Building", 3, myRawData);
-
-	myRequisites.Print();
-
-	return 0;
-}
+#endif
 
